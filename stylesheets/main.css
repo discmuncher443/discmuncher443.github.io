@@ -46,8 +46,12 @@
     text-align: center;
 }
 
+#dutchman_overlay {
+    font-family: 'Brush Script MT', cursive;
+}
+
 .content {
-    height: 1000px; /* Add height to enable scrolling */
+    height: 2000px; /* Add height to enable scrolling */
     background-color: #f2f2f2;
     /* z-index: 1; */
     padding: 20px;
@@ -59,4 +63,42 @@
 
 .text-md-center{
     color: white;
+}
+
+
+.pirata-one-regular {
+  font-family: "Pirata One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.rajdhani-light {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.rajdhani-regular {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rajdhani-medium {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.rajdhani-semibold {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.rajdhani-bold {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
