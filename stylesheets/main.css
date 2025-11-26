@@ -4,8 +4,9 @@
     justify-content: center;
 }
 
-.navbar_text{
+.navbar{
     color: white;
+    z-index: 1;
 }
 
 /*
@@ -20,6 +21,36 @@
 }
 
 */
+
+.overlay h1 {
+    font-size: clamp(1.2rem, 6vw, 4rem);
+}
+.overlay h2 {
+    font-size: clamp(0.8rem, 3vw, 2rem);
+}
+.overlay h3 {
+    font-size: clamp(0.6rem, 2.5vw, 1.5rem);
+}
+
+@media (max-width: 768px) {
+
+    .custom-collapse {
+        position: absolute;
+        top: 100%;          /* directly under navbar */
+        right: 25%;           /* align with hamburger */
+        width: 250px;       /* ~1/4 of the screen */
+        /* background-color: rgba(0,0,0,0.9); */
+        border-radius: 6px;
+        padding: 10px 0;
+        z-index: 9999;
+    }
+    
+    .overlay {
+        padding: 0 20px;
+        text-align: center;
+    }
+}
+
 
 #bg-video {
     position: fixed; /* acts like background-attachment: fixed */
@@ -44,6 +75,7 @@
     color: white;
     border-radius: 8px;
     text-align: center;
+    z-index: 0;
 }
 
 #dutchman_overlay {
