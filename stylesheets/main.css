@@ -1,0 +1,50 @@
+#one{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header{
+    background-color: black;
+}
+
+/*
+
+.parallax-section {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/85/Skull_and_Crossbones.png"); 
+    min-height: 400px;
+    background-attachment: fixed; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+*/
+
+#bg-video {
+    position: fixed; /* acts like background-attachment: fixed */
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+}
+
+.content {
+    height: 1000px; /* Add height to enable scrolling */
+    background-color: #f2f2f2;
+    /* z-index: 1; */
+    padding: 20px;
+}
+
+#dutchman_window {
+    height: 700px;
+}
+
+.text-md-center{
+    color: white;
+}
