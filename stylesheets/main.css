@@ -23,13 +23,13 @@
 */
 
 .overlay h1 {
-    font-size: clamp(1.2rem, 6vw, 4rem);
+    font-size: clamp(1.2rem, calc(3vw + 2vh), 4rem);
 }
 .overlay h2 {
-    font-size: clamp(0.8rem, 3vw, 2rem);
+    font-size: clamp(0.8rem, calc(2vw + 1.5vh), 2rem);
 }
 .overlay h3 {
-    font-size: clamp(0.6rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.6rem, calc(1.5vw + 1vh), 1.5rem);
 }
 
 @media (max-width: 768px) {
@@ -48,6 +48,12 @@
     .overlay {
         padding: 0 20px;
         text-align: center;
+    }
+
+    #bg-video {
+        object-fit: contain; 
+        min-width: 100%;
+        min-height: auto;
     }
 }
 
