@@ -36,10 +36,12 @@
 
     .custom-collapse {
         position: absolute;
-        top: 100%;          /* directly under navbar */
-        right: 25%;           /* align with hamburger */
-        width: 250px;       /* ~1/4 of the screen */
-        /* background-color: rgba(0,0,0,0.9); */
+        top: 100%;          
+        left: 50%;
+        transform: translateX(-50%); /* shift left by 50% of its width */
+        width: 150px;       
+        
+        text-align: center;
         border-radius: 6px;
         padding: 10px 0;
         z-index: 9999;
@@ -47,6 +49,7 @@
     
     .overlay {
         padding: 0 20px;
+        margin-top: 120px;
         text-align: center;
     }
 
@@ -68,7 +71,7 @@
     height: auto;
     transform: translate(-50%, -50%);
     z-index: -1;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .coach-card {
