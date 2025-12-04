@@ -58,11 +58,61 @@
         min-width: 100%;
         min-height: auto;
     }
+
+    .custom-collapse .nav-item {
+        margin-top: 0px; 
+        margin-bottom: 0px;
+    }
+
+    /* .img-thumbnail {
+        width: clamp(50px, calc(1vw + 1vh), 100px); 
+        height: auto;
+    } */
+
+    .navbar-text {
+
+    }
 }
 
 
+.img-thumbnail {
+    width: clamp(35px, calc(5vw + 5vh), 100px);
+    height: auto;
+
+    
+
+    object-fit: contain;
+    object-position: center;
+}
+
+.marquee-content {
+    /* Set the line height to match the font size exactly */
+    line-height: 2.0; 
+    
+    /* Add a little padding to the top/bottom for a tiny gap between the border */
+    /* padding-top: 2px;
+    padding-bottom: 2px; */
+    
+    /* Display inline-block helps with vertical alignment */
+    display: inline-block; 
+}
+
+.quote-item {
+    /* Set a consistent horizontal margin on the right of each quote. */
+    /* Adjust '40px' to increase or decrease the spacing. */
+    margin-right: 40px; 
+    
+    /* Ensure the span behaves like a block element for margin to work */
+    display: inline-block; 
+}
+
+#navbar-inquire {
+    /* width: clamp(35px, calc(5vw + 5vh), 100px);
+    height: auto; */
+}
+
 #bg-video {
-    position: fixed; /* acts like background-attachment: fixed */
+    position: fixed; 
     top: 50%;
     left: 50%;
     min-width: 100%;
