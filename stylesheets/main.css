@@ -137,6 +137,14 @@
     display: block;
 }
 
+.athlete-image {
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
+    border-radius: 6px;
+    display: block;
+}
+
 
 
 .overlay {
@@ -264,7 +272,17 @@
     font-style: normal;
 }
 
+/* CRITICAL: Ensure the UL (the Flex container) prevents wrapping */
+.nav-pills {
+    flex-wrap: nowrap !important; /* Use !important to override any conflicting Bootstrap default */
+}
 
+/* Target the list items (the flex children) inside the nav-pills container */
+.nav-pills .nav-item {
+    /* CRITICAL: Force the list item not to shrink or grow */
+    flex-shrink: 0;
+    flex-grow: 0;
+}
 
 .nav-pills .nav-link {
     padding: 0.25rem 0.5rem;
@@ -278,19 +296,39 @@
     font-weight: 400;
     font-style: normal;
 
+    white-space: nowrap;
+
+    /* Ensures the button itself does not shrink or grow based on content */
+    flex-shrink: 0;
+
 }
 
 .nav-pills .nav-link.active {
     color: #212529 !important;
     font-weight: bold;
     background-color: transparent !important;
-    border-left: 3px solid #007bff;
-    padding-left: calc(0.5rem - 3px);
+    /* border-left: 3px solid #007bff;
+    padding-left: calc(0.5rem - 3px); */
     text-decoration: underline;
 
     /* rajdhani-bold */
     font-family: "Rajdhani", sans-serif;
     font-weight: 700;
     font-style: normal;
+}
 
+.scrolling-tabs-wrapper {
+    /* Core scrolling ability */
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* CRITICAL: Force all flex items (the tabs) to stay on one line */
+    white-space: nowrap;
+
+    /* Optional: Hide scrollbar for aesthetics */
+    scrollbar-width: none;
+}
+
+.scrolling-tabs-wrapper::-webkit-scrollbar {
+    display: none;
 }

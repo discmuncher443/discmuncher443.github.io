@@ -7,9 +7,18 @@ document.addEventListener('DOMContentLoaded', function () {
 function populate_athlete_testimonials() {
 
     const tabData = [
-        { id: "cat", label: "Section 1: The Cat", content: "SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 ", imageSrc: "images/bayless_roster.jpg"},
-        { id: "dog", label: "Section 2: The Dog", content: "SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 ", imageSrc: "images/Skull_and_Crossbones.png"},
-        { id: "bird", label: "Section 3: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg"}
+        { id: "cat", label: "Section 1: The Cat", content: "SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 SAMPLE CONTENT1 ", imageSrc: "images/bayless_roster.jpg" },
+        { id: "dog", label: "Section 2: The Dog", content: "SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 SAMPLE CONTENT2 ", imageSrc: "images/Skull_and_Crossbones.png" },
+        { id: "bird", label: "Section 3: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 4: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 5: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 6: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 7: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 8: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 9: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 10: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" },
+        { id: "bird", label: "Section 11: The Bird", content: "SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 SAMPLE CONTENT3333 ", imageSrc: "images/dutchman_boat.jpg" }
+
     ];
 
 
@@ -29,16 +38,18 @@ function populate_athlete_testimonials() {
 
         // 1. Generate the Button/Label HTML
         navHTML += `
-            <button class="nav-link ${activeClass}" 
-                    id="${item.id}-tab" 
-                    data-bs-toggle="pill" 
-                    data-bs-target="#${item.id}-pane" 
-                    type="button" 
-                    role="tab" 
-                    aria-controls="${item.id}-pane" 
-                    aria-selected="${ariaSelected}">
-                ${item.label}
-            </button>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link ${activeClass}" 
+                        id="${item.id}-tab" 
+                        data-bs-target="#${item.id}-pane" 
+                        data-bs-toggle="pill" 
+                        type="button" 
+                        role="tab" 
+                        aria-controls="${item.id}-pane" 
+                        aria-selected="${ariaSelected}">
+                    ${item.label}
+                </button>
+            </li>
         `;
 
         // 2. Generate the Content Pane HTML
@@ -49,9 +60,10 @@ function populate_athlete_testimonials() {
                  aria-labelledby="${item.id}-tab" 
                  tabindex="0">
                 ${item.content}
-                <img src="${item.imageSrc}" class="col-md-6 float-md-end mb-3 ms-md-3" alt="...">       
+                <img src="${item.imageSrc}" class="athlete-image" alt="...">       
             </div>
         `;
+        // <img src="${item.imageSrc}" class="col-md-6 float-md-end mb-3 ms-md-3 athlete-image" alt="...">       
     });
 
     // Insert the generated HTML into the DOM
