@@ -1,10 +1,10 @@
-#one{
+#one {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.navbar{
+.navbar {
     color: white;
     z-index: 1;
 }
@@ -25,9 +25,11 @@
 .overlay h1 {
     font-size: clamp(1.2rem, calc(3vw + 2vh), 4rem);
 }
+
 .overlay h2 {
     font-size: clamp(0.8rem, calc(2vw + 1.5vh), 2rem);
 }
+
 .overlay h3 {
     font-size: clamp(0.6rem, calc(1.5vw + 1vh), 1.5rem);
 }
@@ -36,17 +38,18 @@
 
     .custom-collapse {
         position: absolute;
-        top: 100%;          
+        top: 100%;
         left: 50%;
-        transform: translateX(-50%); /* shift left by 50% of its width */
-        width: 150px;       
-        
+        transform: translateX(-50%);
+        /* shift left by 50% of its width */
+        width: 150px;
+
         text-align: center;
         border-radius: 6px;
         padding: 10px 0;
         z-index: 9999;
     }
-    
+
     .overlay {
         padding: 0 20px;
         margin-top: clamp(35px, calc(1.5vw + 1vh), 40px);
@@ -54,13 +57,13 @@
     }
 
     #bg-video {
-        object-fit: contain; 
+        object-fit: contain;
         min-width: 100%;
         min-height: auto;
     }
 
     .custom-collapse .nav-item {
-        margin-top: 0px; 
+        margin-top: 0px;
         margin-bottom: 0px;
     }
 
@@ -69,9 +72,7 @@
         height: auto;
     } */
 
-    .navbar-text {
-
-    }
+    .navbar-text {}
 }
 
 
@@ -79,7 +80,7 @@
     width: clamp(35px, calc(5vw + 5vh), 100px);
     height: auto;
 
-    
+
 
     object-fit: contain;
     object-position: center;
@@ -87,23 +88,23 @@
 
 .marquee-content {
     /* Set the line height to match the font size exactly */
-    line-height: 2.0; 
-    
+    line-height: 2.0;
+
     /* Add a little padding to the top/bottom for a tiny gap between the border */
     /* padding-top: 2px;
     padding-bottom: 2px; */
-    
+
     /* Display inline-block helps with vertical alignment */
-    display: inline-block; 
+    display: inline-block;
 }
 
 .quote-item {
     /* Set a consistent horizontal margin on the right of each quote. */
     /* Adjust '40px' to increase or decrease the spacing. */
-    margin-right: 40px; 
-    
+    margin-right: 40px;
+
     /* Ensure the span behaves like a block element for margin to work */
-    display: inline-block; 
+    display: inline-block;
 }
 
 #navbar-inquire {
@@ -112,7 +113,7 @@
 }
 
 #bg-video {
-    position: fixed; 
+    position: fixed;
     top: 50%;
     left: 50%;
     min-width: 100%;
@@ -142,9 +143,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     padding: 20px 40px;
-    background: rgba(0, 0, 0, 0.5); /* semi-transparent */
+    background: rgba(0, 0, 0, 0.5);
+    /* semi-transparent */
     color: white;
     border-radius: 8px;
     text-align: center;
@@ -156,7 +158,8 @@
 }
 
 .content {
-    height: 2000px; /* Add height to enable scrolling */
+    height: 2000px;
+    /* Add height to enable scrolling */
     background-color: #f2f2f2;
     /* z-index: 1; */
     padding: 20px;
@@ -166,63 +169,128 @@
     height: 700px;
 }
 
-.text-md-center{
+.text-md-center {
     color: white;
+}
+
+/* --- Styles for the Horizontal Scrollable Content Area --- */
+.horizontal-scroll-content {
+    /* REQUIRED: Set a fixed height and enable horizontal scrolling */
+    height: 300px;
+    /* Example height */
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    /* Make the content flow horizontally */
+    white-space: nowrap;
+
+    /* Ensure the scrollable items are displayed in a line */
+    font-size: 0;
+    /* Important: Prevents extra spacing from white-space: nowrap; */
+    border: 1px solid #ccc;
+    /* Border for visibility */
+}
+
+/* --- Styles for the Individual Content Items --- */
+.horizontal-item {
+    /* Set a fixed width for each content panel */
+    width: 300px;
+    /* Example fixed width */
+
+    /* Make the items appear in a row */
+    display: inline-block;
+
+    /* Reset font size for content */
+    font-size: 16px;
+
+    padding: 20px;
+    height: 100%;
+    /* Take full height of parent */
 }
 
 .brand-button {
     background-color: #333;
-    color: white; 
+    color: white;
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.1s;
 }
 
 .brand-button:active {
-    background-color: #555; 
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
+    background-color: #555;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .pirata-one-regular {
-  font-family: "Pirata One", system-ui;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Pirata One", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .pirata-one-light {
-  font-family: "Pirata One", system-ui;
-  font-weight: 200;
-  font-style: normal;
+    font-family: "Pirata One", system-ui;
+    font-weight: 200;
+    font-style: normal;
 }
 
 
 .rajdhani-light {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
 .rajdhani-regular {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .rajdhani-medium {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 500;
-  font-style: normal;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .rajdhani-semibold {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 600;
-  font-style: normal;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-style: normal;
 }
 
 .rajdhani-bold {
-  font-family: "Rajdhani", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
+
+
+.nav-pills .nav-link {
+    padding: 0.25rem 0.5rem;
+    background-color: transparent;
+    color: #6c757d;
+    font-weight: normal;
+    border-radius: 0;
+
+    /* rajdhani-regular */
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.nav-pills .nav-link.active {
+    color: #212529 !important;
+    font-weight: bold;
+    background-color: transparent !important;
+    border-left: 3px solid #007bff;
+    padding-left: calc(0.5rem - 3px);
+    text-decoration: underline;
+
+    /* rajdhani-bold */
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
+}
