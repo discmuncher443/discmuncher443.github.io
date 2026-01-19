@@ -230,6 +230,11 @@
     /* Center it for mobile, though width: 100% usually handles this */
     display: block;
     margin: 0 auto;
+
+    color-interpolation-filters:sRGB;
+    
+    /* A tiny bit of brightness reduction can also "clip" the HDR peaks */
+    filter: brightness(0.99);
 }
 
 #dynamic-tab-content {

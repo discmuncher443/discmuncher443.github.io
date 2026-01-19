@@ -72,7 +72,7 @@ function populate_athlete_testimonials() {
         { id: "elliot_rods", label: "Elliot Rodstrom", content: "The workout warrior that shows up every day. Throwing down monster training to translate to Case Western indoor facility records", imageSrc: "images/elliot_rods.jpg" },
         { id: "parker_banz", label: "Parker Banzhaf", content: "From an average High School Junior to a standout Senior, Parker continues to improve at a staggering rate at North Florida and the roads around coastal Florida", imageSrc: "images/parker_banz.jpg" },
         { id: "alex_kowa", label: "Alex Kowalek", content: "Adapting to a difficult working schedule, Alex has maintained an impressive training load, through a strenous work schedule", imageSrc: "images/alex_kowa.jpg" },
-        { id: "johnny_sayl", label: "Johnny Sayle", content: "He's doing alright so far, keep going!", imageSrc: "images/johnny_sayl.jpg" },
+        { id: "johnny_sayl", label: "Johnny Sayle", content: "He's doing alright so far, keep going!", imageSrc: "images/johnny_sayle.jpg" },
 
     ];
 
