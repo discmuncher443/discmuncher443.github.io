@@ -22,6 +22,60 @@
 
 */
 
+/* Container holds the background (low-res) and foreground (high-res) */
+.progressive-image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    /* Example aspect ratio */
+
+    /* NEW: Apply blur and low-res background here */
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    /* Blur the background image */
+    transition: filter 500ms;
+    /* Optional: Transition the blur when the sharp image loads */
+}
+
+/* 1. High-Res Image Styling */
+.high-res {
+    border-radius: 15px !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    /* Starts hidden */
+    transition: opacity 800ms ease-in-out;
+    z-index: 20;
+    
+}
+
+/* 2. Class added by JS when high-res image is loaded */
+.progressive-image-container.is-loaded {
+    filter: blur(0);
+    /* Remove the blur from the container */
+}
+
+.progressive-image-container.is-loaded .high-res {
+    opacity: 1;
+    /* Fade in the sharp image */
+}
+
+
+.dutch-img {
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 15px !important;
+}
+
+
+
 .overlay h1 {
     font-size: clamp(1.2rem, calc(3vw + 2vh), 4rem);
 }
@@ -57,9 +111,13 @@
     }
 
     #bg-video {
-        object-fit: contain;
-        min-width: 100%;
-        min-height: auto;
+        /* object-fit: contain; */
+        /* min-width: 100%; */
+        /* min-height: auto; */
+        height: 100vh;
+        width: 100vw;
+        object-fit: cover;
+        top: 50px;
     }
 
     .custom-collapse .nav-item {
@@ -71,6 +129,16 @@
         width: clamp(50px, calc(1vw + 1vh), 100px); 
         height: auto;
     } */
+
+    .overlay {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 90%; 
+        text-align: center;
+        top: 40%;
+
+    }
 
     .navbar-text {}
 }
@@ -96,6 +164,10 @@
 
     /* Display inline-block helps with vertical alignment */
     display: inline-block;
+}
+
+#testimonials-section {
+    z-index: 1;
 }
 
 .quote-item {
@@ -137,12 +209,34 @@
     display: block;
 }
 
-.athlete-image {
+/* .athlete-image {
     height: 100px;
     width: auto;
     margin: 0 auto;
     border-radius: 6px;
     display: block;
+} */
+
+.athlete-image {
+    /* Remove fixed height */
+    width: 100%;
+    height: auto; 
+    
+    /* Ensure it looks professional */
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    /* Center it for mobile, though width: 100% usually handles this */
+    display: block;
+    margin: 0 auto;
+}
+
+#dynamic-tab-content {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
@@ -150,15 +244,29 @@
 .overlay {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 10%;
+    transform: translate(20px);
     padding: 20px 40px;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
     /* semi-transparent */
+    opacity: 0;
+    pointer-events: none;
     color: white;
     border-radius: 8px;
-    text-align: center;
-    z-index: 0;
+    text-align: left;
+    z-index: 1;
+    max-width: 500px
+}
+
+.slide-up {
+    animation: slideUpFade 1.5s ease-out forwards; 
+}
+
+@keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #dutchman_overlay {
@@ -166,7 +274,7 @@
 }
 
 .content {
-    height: 2000px;
+    height: auto;
     /* Add height to enable scrolling */
     background-color: #f2f2f2;
     /* z-index: 1; */
@@ -174,7 +282,7 @@
 }
 
 #dutchman_window {
-    height: 700px;
+    height: 100vh;
 }
 
 .text-md-center {
@@ -274,7 +382,8 @@
 
 /* CRITICAL: Ensure the UL (the Flex container) prevents wrapping */
 .nav-pills {
-    flex-wrap: nowrap !important; /* Use !important to override any conflicting Bootstrap default */
+    flex-wrap: nowrap !important;
+    /* Use !important to override any conflicting Bootstrap default */
 }
 
 /* Target the list items (the flex children) inside the nav-pills container */
@@ -318,16 +427,36 @@
 }
 
 .scrolling-tabs-wrapper {
-    /* Core scrolling ability */
+
     overflow-x: auto;
     overflow-y: hidden;
-
-    /* CRITICAL: Force all flex items (the tabs) to stay on one line */
     white-space: nowrap;
 
-    /* Optional: Hide scrollbar for aesthetics */
-    scrollbar-width: none;
+    position: relative;
+
+    height: 100%;
+
+    mask-image: linear-gradient(to right,
+            transparent,
+            /* Fades out on the left */
+            black 50px,
+            /* Fully visible past 20px */
+            black calc(100% - 50px),
+            /* Fully visible up to 20px from the right */
+            transparent
+            /* Fades out on the right */
+        );
+
+    -webkit-mask-image: linear-gradient(to right,
+            transparent,
+            black 20px,
+            black calc(100% - 20px),
+            transparent);
 }
+
+/* Note: You might need to set the background-color of the scrolling wrapper 
+   or the parent element (col-12) to match your overall background color. 
+   If your background is solid white, use white in the gradient instead of black. */
 
 .scrolling-tabs-wrapper::-webkit-scrollbar {
     display: none;
