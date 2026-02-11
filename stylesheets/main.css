@@ -202,8 +202,11 @@
 }
 
 .coach-img {
-    height: auto;
     width: clamp(150px, 25vw, 300px);
+    height: auto;
+    /* width: clamp(150px, 25vw, 300px); */
+
+    object-fit: cover;
     margin: 0 auto;
     border-radius: 6px;
     display: block;
@@ -248,8 +251,8 @@
 
 .overlay {
     position: absolute;
-    top: 50%;
-    left: 10%;
+    top: 25%;
+    left: 5%;
     transform: translate(20px);
     padding: 20px 40px;
     /* background: rgba(0, 0, 0, 0.5); */
@@ -385,6 +388,11 @@
     font-style: normal;
 }
 
+#animatedText {
+    z-index: 100;
+    pointer-events: auto;
+}
+
 /* CRITICAL: Ensure the UL (the Flex container) prevents wrapping */
 .nav-pills {
     flex-wrap: nowrap !important;
@@ -396,6 +404,7 @@
     /* CRITICAL: Force the list item not to shrink or grow */
     flex-shrink: 0;
     flex-grow: 0;
+    color: black;
 }
 
 .nav-pills .nav-link {
