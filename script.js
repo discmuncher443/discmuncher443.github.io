@@ -110,7 +110,7 @@ function populate_athlete_testimonials() {
             , imageSrc: "images/elliot_rods.jpg"
         },
         {
-            id: "david_duvic", label: "David Duvic", content: "Working with Coach Ben Bayless has allowed me to progress further in the sport than I could have ever imagined, all while developing my appreciation and understanding of the process. Top notch communication, expertise, and passion are necessary too effective coaching, and I am certain that this program embodies all. Taking a chance and reaching out was one of the best decisions I have ever made."
+            id: "david_duvic", label: "David Ducic", content: "Working with Coach Ben Bayless has allowed me to progress further in the sport than I could have ever imagined, all while developing my appreciation and understanding of the process. Top notch communication, expertise, and passion are necessary too effective coaching, and I am certain that this program embodies all. Taking a chance and reaching out was one of the best decisions I have ever made."
             , imageSrc: "images/david_duvic.png"
         },
         {
