@@ -22,24 +22,20 @@
 
 */
 
-/* Container holds the background (low-res) and foreground (high-res) */
-.progressive-image-container {
+/* .progressive-image-container {
     position: relative;
-    width: 100%;
-    height: 0;
+    width: auto;
+    height: auto;
     padding-bottom: 56.25%;
-    /* Example aspect ratio */
 
-    /* NEW: Apply blur and low-res background here */
     background-size: cover;
     background-position: center;
     filter: blur(20px);
-    /* Blur the background image */
+    
     transition: filter 500ms;
-    /* Optional: Transition the blur when the sharp image loads */
+    border-radius: 8px;
+    
 }
-
-/* 1. High-Res Image Styling */
 .high-res {
     border-radius: 15px !important;
     position: absolute;
@@ -50,11 +46,38 @@
     object-fit: cover;
 
     opacity: 0;
-    /* Starts hidden */
     transition: opacity 800ms ease-in-out;
     z-index: 20;
     
+} */
+.progressive-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Now works because of d-flex and flex-grow-1 on the parent */
+    min-height: 300px;
+    /* Essential: prevents the image from disappearing on mobile */
+
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    transition: filter 500ms;
+    border-radius: 8px;
+    overflow: hidden;
 }
+
+.high-res {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Keeps the photo from stretching */
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+
 
 /* 2. Class added by JS when high-res image is loaded */
 .progressive-image-container.is-loaded {
@@ -134,7 +157,7 @@
         left: 0;
         right: 0;
         margin: 0 auto;
-        width: 90%; 
+        width: 90%;
         text-align: center;
         top: 40%;
 
@@ -223,35 +246,34 @@
 .athlete-image {
     /* Remove fixed height */
     width: 100%;
-    height: auto; 
-    
+    max-width: 700px;
+    height: auto;
+
     /* Ensure it looks professional */
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
     /* Center it for mobile, though width: 100% usually handles this */
     display: block;
     margin: 0 auto;
 
-    color-interpolation-filters:sRGB;
-    
-    /* A tiny bit of brightness reduction can also "clip" the HDR peaks */
-    filter: brightness(0.99);
 }
 
 #dynamic-tab-content {
-    min-height: 400px;
+    /* min-height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
+    overflow: hidden;
+    position: relative;
 }
 
 
 
 .overlay {
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 5%;
     transform: translate(20px);
     padding: 20px 40px;
@@ -267,7 +289,7 @@
 }
 
 .slide-up {
-    animation: slideUpFade 1.5s ease-out forwards; 
+    animation: slideUpFade 1.5s ease-out forwards;
 }
 
 @keyframes slideUpFade {
@@ -450,22 +472,30 @@
 
     height: 100%;
 
-    mask-image: linear-gradient(to right,
-            transparent,
-            /* Fades out on the left */
-            black 50px,
-            /* Fully visible past 20px */
-            black calc(100% - 50px),
-            /* Fully visible up to 20px from the right */
-            transparent
-            /* Fades out on the right */
-        );
+    -webkit-overflow-scrolling: touch;
 
+    /* The base mask: hide edges */
+    mask-image: linear-gradient(to right,
+            transparent, black 40px,
+            black calc(100% - 40px), transparent);
     -webkit-mask-image: linear-gradient(to right,
-            transparent,
-            black 20px,
-            black calc(100% - 20px),
-            transparent);
+            transparent, black 40px,
+            black calc(100% - 40px), transparent);
+
+    /* Smooth transition when we toggle the mask */
+    transition: -webkit-mask-image 0.3s ease;
+}
+
+/* At the start: The left side should be solid black (no fade) */
+.scrolling-tabs-wrapper.at-start {
+    -webkit-mask-image: linear-gradient(to right, black, black calc(100% - 40px), transparent) !important;
+    mask-image: linear-gradient(to right, black, black calc(100% - 40px), transparent) !important;
+}
+
+/* At the end: The right side should be solid black (no fade) */
+.scrolling-tabs-wrapper.at-end {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 40px, black) !important;
+    mask-image: linear-gradient(to right, transparent, black 40px, black) !important;
 }
 
 /* Note: You might need to set the background-color of the scrolling wrapper 
@@ -474,4 +504,93 @@
 
 .scrolling-tabs-wrapper::-webkit-scrollbar {
     display: none;
+}
+
+
+.pricing-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    border-color: #333;
+}
+
+.product-badge {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.price-header .currency {
+    font-size: 1.5rem;
+    vertical-align: top;
+    font-weight: 700;
+}
+
+.price-header .amount {
+    font-size: 4rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.price-header .period {
+    color: #777;
+    font-size: 1rem;
+}
+
+.pricing-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f8f8;
+}
+
+.pricing-features li i {
+    color: #333;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Custom Card Specific Styling */
+.pricing-card-custom {
+    background-color: transparent; /* Makes it look like an alternative option */
+    border: 2px dashed #333;      /* Dashed border implies 'custom/flexible' */
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.pricing-card-custom:hover {
+    background-color: #fff;
+    box-shadow: 8px 8px 0px 0px #333;
+    transform: translate(-4px, -4px);
+    border-style: solid; /* Switches to solid on hover */
+}
+
+/* Ensures both cards stay the same height even with different text lengths */
+.pricing-card-dark, .pricing-card-custom {
+    min-height: 100%;
+}
+
+.pricing-content p {
+    line-height: 1.6;
+}
+
+/* Adjusting the 'amount' text for the custom card */
+.pricing-card-custom .amount {
+    font-size: 2.2rem; /* Slightly smaller because it's a phrase, not a number */
+    display: block;
+    color: #333;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
 }

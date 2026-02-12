@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slide_in_overlay();
     lazy_load_image();
     populate_athlete_testimonials();
+    initScrollIndicators();
 });
 
 function slide_in_overlay() {
@@ -62,25 +63,68 @@ function lazy_load_image() {
     });
 }
 
+function initScrollIndicators() {
+    const wrapper = document.querySelector('.scrolling-tabs-wrapper');
+
+    if (!wrapper) return;
+
+    const updateMask = () => {
+        const scrollLeft = Math.ceil(wrapper.scrollLeft);
+        const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+
+        // Use a 10px buffer for reliability
+        const isAtStart = scrollLeft <= 10;
+        const isAtEnd = scrollLeft >= (maxScroll - 10);
+
+        if (isAtStart) {
+            wrapper.classList.add('at-start');
+            wrapper.classList.remove('at-end');
+        } else if (isAtEnd) {
+            wrapper.classList.add('at-end');
+            wrapper.classList.remove('at-start');
+        } else {
+            wrapper.classList.remove('at-start', 'at-end');
+        }
+    };
+    wrapper.addEventListener('scroll', updateMask);
+    window.addEventListener('resize', updateMask);
+
+    // Run once on load
+    updateMask();
+}
 
 
 function populate_athlete_testimonials() {
 
     const tabData = [
-        { id: "jake_bert", label: "Jake Bertlesen", content: "The results speak for themselves. This training has allowed me to unlock running potential I never knew existed. The plans are extremely well-tailored to maximize outcomes for any given training timeline or race length. This program places a heavy emphasis on the importance of recovery and adjustments are readily made to prevent overtraining and injuries. I feel confident and prepared when I toe the line for each race. From the mile to the marathon, we have been able to accomplish amazing feats in the sport, and I trust the best is yet to come!"
-            , imageSrc: "images/jake_bert.webp" },
-        { id: "jenn_davi", label: "Jennifer Davis", content: "Ben is the absolute best! Not only did he bring my marathon time down from 3:12 to 2:50 in just 5 months and half time to 1:17 in 7 months, he also helped me develop immense faith in my ability as a runner & develop a love for the process. Without prior running experience, I lacked racing confidence and Ben has helped significantly through constant communication, education and endless support. If you’re looking for a coach who is genuinely invested in your success and understanding you as an athlete look no further!"
-            , imageSrc: "images/jen_davis.jpg" },
-        { id: "elliot_rods", label: "Elliot Rodstrom", content: "The workout warrior that shows up every day. Throwing down monster training to translate to Case Western indoor facility records"
-            , imageSrc: "images/elliot_rods.jpg" },
-        { id: "david_duvic", label: "David Duvic", content: "Working with Coach Ben Bayless has allowed me to progress further in the sport than I could have ever imagined, all while developing my appreciation and understanding of the process. Top notch communication, expertise, and passion are necessary too effective coaching, and I am certain that this program embodies all. Taking a chance and reaching out was one of the best decisions I have ever made."
-            , imageSrc: "images/david_duvic.png" },
-        { id: "parker_banz", label: "Parker Banzhaf", content: "If you want to get better in all aspects of life, look no further. Ben possesses elite-level communication and is always on top of the little things to keep you adapting and always progressing further. It didn’t even feel like we were working over the phone with how frequently we communicated. Failing under the Dutchman method doesn’t even feel like a possibility."
-            , imageSrc: "images/parker_banz_2.jpg" },
-        { id: "alex_kowa", label: "Alex Kowalek", content: "Adapting to a difficult working schedule, Alex has maintained an impressive training load, through a strenous work schedule"
-            , imageSrc: "images/alex_kowa.jpg" },
-        { id: "johnny_sayl", label: "Johnny Sayle", content: "He's doing alright so far, keep going!"
-            , imageSrc: "images/johnny_sayle.jpg" },
+        {
+            id: "jake_bert", label: "Jake Bertelsen", content: "The results speak for themselves. This training has allowed me to unlock running potential I never knew existed. The plans are extremely well-tailored to maximize outcomes for any given training timeline or race length. This program places a heavy emphasis on the importance of recovery and adjustments are readily made to prevent overtraining and injuries. I feel confident and prepared when I toe the line for each race. From the mile to the marathon, we have been able to accomplish amazing feats in the sport, and I trust the best is yet to come!"
+            , imageSrc: "images/jake_bert.webp"
+        },
+        {
+            id: "jenn_davi", label: "Jennifer Davis", content: "Ben is the absolute best! Not only did he bring my marathon time down from 3:12 to 2:50 in just 5 months and half time to 1:17 in 7 months, he also helped me develop immense faith in my ability as a runner & develop a love for the process. Without prior running experience, I lacked racing confidence and Ben has helped significantly through constant communication, education and endless support. If you’re looking for a coach who is genuinely invested in your success and understanding you as an athlete look no further!"
+            , imageSrc: "images/jen_davis.jpg"
+        },
+        {
+            id: "elliot_rods", label: "Elliot Rodstrom", content: "The workout warrior that shows up every day. Throwing down monster training to translate to Case Western indoor facility records"
+            , imageSrc: "images/elliot_rods.jpg"
+        },
+        {
+            id: "david_duvic", label: "David Duvic", content: "Working with Coach Ben Bayless has allowed me to progress further in the sport than I could have ever imagined, all while developing my appreciation and understanding of the process. Top notch communication, expertise, and passion are necessary too effective coaching, and I am certain that this program embodies all. Taking a chance and reaching out was one of the best decisions I have ever made."
+            , imageSrc: "images/david_duvic.png"
+        },
+        {
+            id: "parker_banz", label: "Parker Banzhaf", content: "If you want to get better in all aspects of life, look no further. Ben possesses elite-level communication and is always on top of the little things to keep you adapting and always progressing further. It didn’t even feel like we were working over the phone with how frequently we communicated. Failing under the Dutchman method doesn’t even feel like a possibility."
+            , imageSrc: "images/parker_banz_2.jpg"
+        },
+        {
+            id: "alex_kowa", label: "Alex Kowalek", content: "Adapting to a difficult working schedule, Alex has maintained an impressive training load, through a strenous work schedule"
+            , imageSrc: "images/alex_kowa.jpg"
+        },
+        {
+            id: "johnny_sayl", label: "Johnny Sayle", content: "He's doing alright so far, keep going!"
+            , imageSrc: "images/johnny_sayle.jpg"
+        },
 
     ];
 
