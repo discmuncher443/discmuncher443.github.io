@@ -577,20 +577,26 @@
     border-style: solid; /* Switches to solid on hover */
 }
 
-/* Ensures both cards stay the same height even with different text lengths */
-.pricing-card-dark, .pricing-card-custom {
-    min-height: 100%;
+.pricing-card-dark {
+    background-color: #f4f4f4; /* The slight gray background */
+    border: 2px solid #333;    /* The bold border */
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 
-.pricing-content p {
-    line-height: 1.6;
+.pricing-card-dark:hover {
+    background-color: #ededed;
+    box-shadow: 8px 8px 0px 0px #333; /* The "Hard" shadow */
+    transform: translate(-4px, -4px);
 }
 
-/* Adjusting the 'amount' text for the custom card */
-.pricing-card-custom .amount {
-    font-size: 2.2rem; /* Slightly smaller because it's a phrase, not a number */
-    display: block;
-    color: #333;
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
+.product-badge {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    width: fit-content;
 }
