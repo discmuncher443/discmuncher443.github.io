@@ -106,7 +106,7 @@ function populate_athlete_testimonials() {
             , imageSrc: "images/jen_davis.jpg"
         },
         {
-            id: "elliot_rods", label: "Elliot Rodstrom", content: "The workout warrior that shows up every day. Throwing down monster training to translate to Case Western indoor facility records"
+            id: "elliot_rods", label: "Elliot Rodstrom", content: "The post college journey has been hard to navigate, but with Ben the transition has been seamless. Somehow he is able to make the combination of the complete training load and a full time job feel less stressfull than I could have managed alone. Ben helps adapt my training schedule more than every coach I've had in the past, which has proven to be successful with some of my recent races."
             , imageSrc: "images/elliot_rods.jpg"
         },
         {
@@ -118,13 +118,19 @@ function populate_athlete_testimonials() {
             , imageSrc: "images/parker_banz_2.jpg"
         },
         {
-            id: "alex_kowa", label: "Alex Kowalek", content: "Adapting to a difficult working schedule, Alex has maintained an impressive training load, through a strenous work schedule"
+            id: "alex_kowa", label: "Alex Kowalak", content: "Ben's coaching has been all about maintaining consistency over agressiveness in training, something that I truly enjoy, and have seen substantial progress with lately. With an unforgiving work schedule, Ben and I have come up with creative solutions to continue quality training and just getting out the door every day that I can."
             , imageSrc: "images/alex_kowa.jpg"
         },
         {
-            id: "johnny_sayl", label: "Johnny Sayle", content: "He's doing alright so far, keep going!"
+            id: "johnny_sayl", label: "Johnny Sayle", content: "Under Ben's coaching, I have progressed beyond where I was at in college, something that very few runners get to say. His philosophy of consistent 7/10 effort have worked wonders so far for me, including 30s off of my college 5k PR, and about a minute over my college 8k PR. Excelling at communication, Ben flawlessly adapts my training schedule to fit my busy work and life schedule. Cannot wait to see where we will continue to go in the future!"
             , imageSrc: "images/johnny_sayle.jpg"
         },
+        {
+            id: "max_bregozzo", label: "Max Bregozzo", content: "When I came to Matt, I was coming off a long period of self-coaching, not really having any structure or guidance within my training, I had some knowledge from being a student of the sport, but it limits your performance to a certain point. A priority from Matt was the obvious continuation of my aerobic development, as that is the limiting factor for me, and continuing what I was naturally good at already. He'd also love feedback from myself on the program and structure, and was always willing to be flexible if I communicated to him that didn't work with my schedule. I also had the opportunity to spent some time with Matt while he was home from college and honestly, I learned so much about the sport, how to approach it, and plenty of other bits of info that I still use today. The physiological progression was evident, I've ran times that 2 years ago I thought even come near. I'm so pleased that I can call Matt my coach but also my mate at the same time."
+            , imageSrc: "images/max_bregozzo.jpg"
+        },
+
+        
 
     ];
 

@@ -111,6 +111,85 @@
     font-size: clamp(0.6rem, calc(1.5vw + 1vh), 1.5rem);
 }
 
+/* Make the brand text smaller on mobile so it doesn't hog space */
+@media (max-width: 400px) {
+    .navbar-brand {
+        font-size: 0.8rem !important;
+        margin-right: 5px !important;
+        padding: 4px 8px !important;
+    }
+
+    #navbar-inquire {
+        font-size: 0.7rem !important;
+        padding: 4px 8px !important;
+        white-space: nowrap;
+    }
+
+    .navbar-toggler {
+        padding: 2px 5px !important;
+        font-size: 1rem !important;
+        /* Makes the hamburger icon slightly smaller */
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* 1. Shrink the Section Padding */
+    #pricing-section {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* 2. Compact the Cards */
+    .pricing-card-dark {
+        padding: 15px 10px !important;
+        /* Reduce internal space */
+    }
+
+    .pricing-card-dark h4 {
+        font-size: 0.9rem !important;
+        /* Smaller titles */
+        height: 2.5rem;
+        /* Keeps titles aligned if one is 2 lines */
+    }
+
+    .product-badge {
+        font-size: 0.6rem !important;
+        padding: 2px 6px !important;
+    }
+
+    /* 3. Scale the Price */
+    .price-header .amount {
+        font-size: 1.8rem !important;
+    }
+
+    .price-header .period {
+        font-size: 0.7rem !important;
+    }
+
+    /* 4. The Feature List */
+    .pricing-features li {
+        font-size: 0.7rem !important;
+        padding: 4px 0 !important;
+    }
+
+    .pricing-features li i {
+        font-size: 0.6rem;
+        margin-right: 4px;
+    }
+
+    /* 5. The Buttons */
+    .pricing-card-dark .btn {
+        padding: 10px 5px !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Adjust the "Custom Options" text specifically */
+    .pricing-content p {
+        font-size: 0.7rem !important;
+    }
+}
+
 @media (max-width: 768px) {
 
     .custom-collapse {
@@ -143,15 +222,89 @@
         top: 50px;
     }
 
-    .custom-collapse .nav-item {
-        margin-top: 0px;
-        margin-bottom: 0px;
+    /* .scrolling-tabs-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    /* .img-thumbnail {
-        width: clamp(50px, calc(1vw + 1vh), 100px); 
-        height: auto;
+    .scrolling-tabs-wrapper .nav {
+        flex-wrap: nowrap;
+        justify-content: flex-start !important;
+    }
+
+    .nav-pills .nav-link {
+        white-space: nowrap;
     } */
+
+    @media (min-width: 768px) and (max-width: 1400px) {
+        #testimonials-section .container {
+            max-width: 100% !important;
+            /* Allow the container to use full width */
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .scrolling-tabs-wrapper .nav {
+            justify-content: flex-start !important;
+            /* Force left alignment */
+            display: flex;
+            flex-wrap: nowrap !important;
+        }
+    }
+
+    /* 2. Global Fix for the Wrapper */
+    .scrolling-tabs-wrapper {
+        width: 100%;
+        overflow-x: auto !important;
+        /* Force scroll availability */
+        overflow-y: hidden;
+        white-space: nowrap;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+
+        /* REMOVE ALL MASK IMAGES - These are the most common cause of "cutoff" */
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+    }
+
+    /* 3. Force the UL to respect its children's width */
+    .scrolling-tabs-wrapper .nav {
+        width: max-content;
+        min-width: 100%;
+        /* Ensures it covers at least the screen width */
+    }
+
+    /* 
+    .scrolling-tabs-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+
+        padding: 10px 15px;
+    }
+
+    .scrolling-tabs-wrapper .nav {
+        display: flex;
+        flex-wrap: nowrap !important;
+
+        justify-content: flex-start !important;
+        width: max-content;
+    } */
+
+    .scrolling-tabs-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
 
     .overlay {
         left: 0;
@@ -162,8 +315,6 @@
         top: 40%;
 
     }
-
-    .navbar-text {}
 }
 
 
@@ -512,12 +663,12 @@
     border: 1px solid #e0e0e0;
     border-radius: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .pricing-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     border-color: #333;
 }
 
@@ -562,8 +713,10 @@
 
 /* Custom Card Specific Styling */
 .pricing-card-custom {
-    background-color: transparent; /* Makes it look like an alternative option */
-    border: 2px dashed #333;      /* Dashed border implies 'custom/flexible' */
+    background-color: transparent;
+    /* Makes it look like an alternative option */
+    border: 2px dashed #333;
+    /* Dashed border implies 'custom/flexible' */
     border-radius: 4px;
     text-align: center;
     transition: all 0.3s ease-in-out;
@@ -574,19 +727,23 @@
     background-color: #fff;
     box-shadow: 8px 8px 0px 0px #333;
     transform: translate(-4px, -4px);
-    border-style: solid; /* Switches to solid on hover */
+    border-style: solid;
+    /* Switches to solid on hover */
 }
 
 .pricing-card-dark {
-    background-color: #f4f4f4; /* The slight gray background */
-    border: 2px solid #333;    /* The bold border */
+    background-color: #f4f4f4;
+    /* The slight gray background */
+    border: 2px solid #333;
+    /* The bold border */
     border-radius: 4px;
     transition: all 0.3s ease-in-out;
 }
 
 .pricing-card-dark:hover {
     background-color: #ededed;
-    box-shadow: 8px 8px 0px 0px #333; /* The "Hard" shadow */
+    box-shadow: 8px 8px 0px 0px #333;
+    /* The "Hard" shadow */
     transform: translate(-4px, -4px);
 }
 
