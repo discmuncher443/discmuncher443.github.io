@@ -22,9 +22,9 @@ function populate_pr_cards() {
             name: "Kent Ohori",
             category: "Marathon Focus",
             image: "images/kent_ohori.jpg",
-            beforeTime: "2:25:40",
-            currentTime: "2:18:12",
-            improvement: "7 minute improvement in 12 months",
+            beforeTime: "2:55:23",
+            currentTime: "2:29:12",
+            improvement: "26 minute improvement in 12 months",
             // Percentages for the progress bar width
             beforePercent: 100, 
             currentPercent: 75 
@@ -33,8 +33,8 @@ function populate_pr_cards() {
             name: "Kye Lowth",
             category: "5k & 3k",
             image: "images/kye_lowth.jpg",
-            beforeTime: "15:20",
-            currentTime: "14:26",
+            beforeTime: "15:20 (5k)",
+            currentTime: "14:26 (5k)",
             improvement: "54s improvement in 5k",
             beforePercent: 100,
             currentPercent: 65
@@ -53,9 +53,9 @@ function populate_pr_cards() {
             name: "Rohan Nairn",
             category: "Middle Distance",
             image: "images/rohan_nairn.jpg",
-            beforeTime: "4:08 (1500m)",
-            currentTime: "3:56 (1500m)",
-            improvement: "12 second drop in one season",
+            beforeTime: "9:45 (3k)",
+            currentTime: "8:42 (3k)",
+            improvement: "63 second drop in one season",
             beforePercent: 100,
             currentPercent: 55
         }
