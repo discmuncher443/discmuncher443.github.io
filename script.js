@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     lazy_load_image();
     populate_athlete_testimonials();
     initScrollIndicators();
+    populate_pr_cards();
 });
 
 function slide_in_overlay() {
@@ -13,6 +14,96 @@ function slide_in_overlay() {
     setTimeout(() => {
         text.classList.add('slide-up');
     }, 500);
+}
+
+function populate_pr_cards() {
+    const prData = [
+        {
+            name: "Kent Ohori",
+            category: "Marathon Focus",
+            image: "images/kent_ohori.jpg",
+            beforeTime: "2:25:40",
+            currentTime: "2:18:12",
+            improvement: "7 minute improvement in 12 months",
+            // Percentages for the progress bar width
+            beforePercent: 100, 
+            currentPercent: 75 
+        },
+        {
+            name: "Kye Lowth",
+            category: "5k & 3k",
+            image: "images/kye_lowth.jpg",
+            beforeTime: "15:20",
+            currentTime: "14:26",
+            improvement: "54s improvement in 5k",
+            beforePercent: 100,
+            currentPercent: 65
+        },
+        {
+            name: "Max Bregozzo",
+            category: "Middle Distance",
+            image: "images/max_bregozzo.jpg",
+            beforeTime: "4:10 (1500m)",
+            currentTime: "3:59 (1500m)",
+            improvement: "11 second drop in one season",
+            beforePercent: 100,
+            currentPercent: 55
+        },
+        {
+            name: "Rohan Nairn",
+            category: "Middle Distance",
+            image: "images/rohan_nairn.jpg",
+            beforeTime: "4:08 (1500m)",
+            currentTime: "3:56 (1500m)",
+            improvement: "12 second drop in one season",
+            beforePercent: 100,
+            currentPercent: 55
+        }
+    ];
+
+    const container = document.getElementById('dynamic-pr-container');
+    let html = '';
+
+    prData.forEach(athlete => {
+        html += `
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="pr-card h-100 p-4">
+                    <div class="pr-image-wrapper mb-3">
+                        <img src="${athlete.image}" alt="${athlete.name}" class="img-fluid pr-img">
+                    </div>
+                    <div class="pr-content">
+                        <h4 class="rajdhani-bold text-uppercase mb-1">${athlete.name}</h4>
+                        <div class="badge bg-dark rajdhani-regular mb-3">${athlete.category}</div>
+                        
+                        <div class="pr-stats">
+                            <div class="pr-item mb-3">
+                                <div class="d-flex justify-content-between rajdhani-bold small">
+                                    <span>BEFORE</span>
+                                    <span>${athlete.beforeTime}</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill initial" style="width: ${athlete.beforePercent}%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="pr-item">
+                                <div class="d-flex justify-content-between rajdhani-bold text-success small">
+                                    <span>CURRENT</span>
+                                    <span>${athlete.currentTime}</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill improved" style="width: ${athlete.currentPercent}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="rajdhani-regular mt-3 mb-0 small text-muted">*${athlete.improvement}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
 }
 
 
