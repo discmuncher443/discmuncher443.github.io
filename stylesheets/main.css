@@ -815,3 +815,338 @@
     letter-spacing: 0.5px;
     font-size: 0.85rem;
 }
+/* Testimonial Card Styling */
+.testimonial-card {
+    background-color: #fefefe;
+    border: 2px solid #333;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden; /* This crops the image to the card's border radius */
+    margin: 10px;
+}
+
+.testimonial-card:hover {
+    box-shadow: 8px 8px 0px 0px #333;
+    transform: translate(-4px, -4px);
+}
+
+/* The dynamic image: no border, fills the column height */
+.testimonial-img-dynamic {
+    width: 100%;
+    height: 100%;
+    min-height: 350px; /* Ensures it doesn't get too short on small desktops */
+    object-fit: cover;
+    display: block;
+}
+
+/* Responsive Text Scaling */
+.testimonial-text {
+    /* clamp(min, preferred, max) - adjusts font based on viewport */
+    font-size: clamp(1rem, 1.1vw, 1.3rem); 
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 767px) {
+    .testimonial-img-dynamic {
+        height: 300px; /* Fixed height for mobile to keep the card compact */
+        min-height: auto;
+    }
+    
+    .testimonial-card {
+        margin: 5px;
+    }
+}
+
+/* 1. The Outer Shell: Handles the hard shadow and position offset */
+.flip-container {
+    perspective: 1200px; /* Increased for a smoother 3D feel */
+    background-color: transparent;
+    cursor: pointer;
+    margin: 15px;
+    border: 2px solid #333; /* Border stays on the outside shell */
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: visible; /* Allows the flip to happen inside */
+}
+
+/* Hover: The shell moves and gets the shadow */
+.flip-container:hover {
+    box-shadow: 8px 8px 0px 0px #333;
+    transform: translate(-4px, -4px);
+}
+
+/* 2. The Flipper: ONLY handles the 180-degree rotation */
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Toggle flip: No translation here, just rotation */
+.flip-container.flipped .flipper {
+    transform: rotateY(180deg);
+}
+
+/* 3. Front and Back: Ensure they fill the shell perfectly */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    top: 0;
+    left: 0;
+    background-color: #fefefe;
+    border-radius: 2px; /* Slight radius to fit inside the shell */
+}
+
+/* Front side specific */
+.front {
+    z-index: 2;
+    /* Ensure the row inside takes full height */
+}
+
+.front .row {
+    height: 100%;
+}
+
+/* Back side specific */
+.back {
+    transform: rotateY(180deg);
+    background-color: #f8f9fa;
+    z-index: 1;
+}
+
+/* Remove the absolute positioning from children so it flows correctly */
+.testimonial-img-dynamic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Container for the tabs to ensure they don't look floaty */
+#dynamic-tab-nav {
+    gap: 12px;
+    padding: 10px 0;
+}
+
+/* Base style for the Name Buttons */
+#dynamic-tab-nav .nav-link {
+    background-color: #fff;
+    color: #333 !important;
+    border: 2px solid #333 !important;
+    border-radius: 0px; /* Sharp corners for a more industrial look */
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    padding: 10px 20px;
+    text-decoration: none !important;
+}
+
+/* Hover State: The "Hard Shadow" jump */
+#dynamic-tab-nav .nav-link:hover {
+    box-shadow: 4px 4px 0px 0px #333;
+    transform: translate(-2px, -2px);
+    background-color: #f8f9fa;
+}
+
+/* Active State: Black background, white text */
+#dynamic-tab-nav .nav-link.active {
+    background-color: #333 !important;
+    color: #fff !important;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Adjust the scrolling wrapper to handle the new height of shadows */
+.scrolling-tabs-wrapper {
+    padding: 15px 5px; /* Added padding so shadows don't get clipped while scrolling */
+}
+
+/* Fullscreen Overlay */
+.testimonial-focus-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98); /* Almost solid white */
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+}
+
+.testimonial-focus-overlay.active {
+    opacity: 1;
+}
+
+.focus-content-wrapper {
+    width: 90%;
+    max-width: 500px;
+    background: #fff;
+    border: 2px solid #333;
+    padding: 20px;
+    box-shadow: 10px 10px 0px 0px #333;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.focus-scroll-area {
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.close-focus {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+    align-self: flex-end;
+}
+
+/* Fix mobile image height in focus mode */
+.focus-scroll-area .testimonial-img-dynamic {
+    height: auto;
+    max-height: 300px;
+    margin-bottom: 20px;
+}
+
+/* Ensure text doesn't cut off */
+.focus-scroll-area .testimonial-text {
+    font-size: 1.1rem !important;
+    line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+    .flipper {
+        min-height: 350px; /* Shorter cards on mobile */
+    }
+
+    .testimonial-text {
+        /* This creates a "fade out" or ellipsis if text is too long on the main card */
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* Show only 5 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .front .col-md-5 {
+        height: 150px; /* Smaller image on mobile card */
+    }
+}
+
+
+.coach-badge {
+    background-color: #fff !important;
+    color: #333 !important;
+    border: 1px solid #333 !important;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+/* Ensure badges wrap nicely on smaller cards */
+.pr-content .d-flex.flex-wrap {
+    margin-bottom: 1rem;
+}
+
+
+/* For Wide Screens: Center the buttons if they fit */
+@media (min-width: 992px) {
+    .scrolling-tabs-wrapper {
+        display: flex;
+        justify-content: center;
+        mask-image: none; /* No need for fade if they all fit */
+        -webkit-mask-image: none;
+    }
+    
+    #dynamic-tab-nav {
+        width: auto;
+        justify-content: center;
+    }
+}
+
+/* For Mid and Small Screens: Align left for scrolling */
+@media (max-width: 991px) {
+    #dynamic-tab-nav {
+        justify-content: flex-start;
+        padding-left: 20px; /* Gives the first name some breathing room */
+    }
+}
+
+/* 1. The Wrapper: Ensure it doesn't have a height limit */
+.scrolling-tabs-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
+    padding: 15px 5px; /* Space for the button shadows */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Remove any old fixed heights */
+    height: auto !important; 
+    
+    /* Refined Mask: Only fades the very edges */
+    mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+}
+
+/* 2. The UL Container: Prevent line-breaks */
+#dynamic-tab-nav {
+    display: flex;
+    flex-wrap: nowrap !important;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    width: max-content; /* Critical: allows the list to be wider than the screen */
+}
+
+/* 3. The Buttons: Industrial Dutchman Style */
+#dynamic-tab-nav .nav-item {
+    flex: 0 0 auto; /* Stop buttons from shrinking */
+    margin-right: 10px;
+}
+
+#dynamic-tab-nav .nav-link {
+    white-space: nowrap; /* Keep name on one line */
+    border: 2px solid #333 !important;
+    border-radius: 0;
+    background: #fff;
+    color: #333;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+/* 4. Active & Hover States */
+#dynamic-tab-nav .nav-link.active {
+    background: #333 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+#dynamic-tab-nav .nav-link:hover:not(.active) {
+    box-shadow: 4px 4px 0px 0px #333;
+    transform: translate(-2px, -2px);
+}

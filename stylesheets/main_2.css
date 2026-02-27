@@ -1,0 +1,287 @@
+/* --- Global Styles & Typography --- */
+.pirata-one-regular { font-family: "Pirata One", system-ui; font-weight: 400; }
+.pirata-one-light { font-family: "Pirata One", system-ui; font-weight: 200; }
+.rajdhani-light { font-family: "Rajdhani", sans-serif; font-weight: 300; }
+.rajdhani-regular { font-family: "Rajdhani", sans-serif; font-weight: 400; }
+.rajdhani-medium { font-family: "Rajdhani", sans-serif; font-weight: 500; }
+.rajdhani-semibold { font-family: "Rajdhani", sans-serif; font-weight: 600; }
+.rajdhani-bold { font-family: "Rajdhani", sans-serif; font-weight: 700; }
+
+#one { display: flex; align-items: center; justify-content: center; }
+.navbar { color: white; z-index: 1; }
+.content { height: auto; background-color: #f2f2f2; padding: 20px; }
+#dutchman_window { height: 100vh; }
+#animatedText { z-index: 100; pointer-events: auto; }
+
+/* --- Brand Button --- */
+.brand-button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.1s;
+}
+.brand-button:active {
+    background-color: #555;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Hero Section & Video --- */
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 35%;
+    left: 5%;
+    transform: translate(20px);
+    padding: 20px 40px;
+    opacity: 0;
+    pointer-events: none;
+    color: white;
+    border-radius: 8px;
+    text-align: left;
+    z-index: 1;
+    max-width: 500px;
+}
+
+.slide-up { animation: slideUpFade 1.5s ease-out forwards; }
+@keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+
+/* --- Progressive Images --- */
+.progressive-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    transition: filter 500ms;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.high-res {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+
+.progressive-image-container.is-loaded { filter: blur(0); }
+.progressive-image-container.is-loaded .high-res { opacity: 1; }
+
+/* --- Coaches Section --- */
+.coach-card { padding: 10px; }
+.coach-img {
+    width: clamp(150px, 25vw, 300px);
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 6px;
+    display: block;
+}
+
+/* --- Personal Records (PR) Cards --- */
+.pr-card {
+    background-color: #fefefe;
+    border: 2px solid #333;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+.pr-card:hover {
+    box-shadow: 8px 8px 0px 0px #333;
+    transform: translate(-4px, -4px);
+}
+.pr-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border: 2px solid #333;
+    border-radius: 2px;
+}
+.pr-img { width: 100%; height: 100%; object-fit: cover; }
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 2px;
+    margin-top: 4px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+.progress-fill { height: 100%; transition: width 1s ease-in-out; }
+.progress-fill.initial { background-color: #adb5bd; }
+.progress-fill.improved { background-color: #212529; }
+.pr-item span { letter-spacing: 0.5px; font-size: 0.85rem; }
+
+/* --- Testimonials Card (Flip Logic) --- */
+.flip-container {
+    perspective: 1200px;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 15px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+.flip-container:hover {
+    box-shadow: 8px 8px 0px 0px #333;
+    transform: translate(-4px, -4px);
+}
+.flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+.flip-container.flipped .flipper { transform: rotateY(180deg); }
+.front, .back {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    top: 0; left: 0;
+    background-color: #fefefe;
+}
+.front { z-index: 2; }
+.front .row { height: 100%; }
+.back { transform: rotateY(180deg); background-color: #f8f9fa; z-index: 1; }
+.testimonial-img-dynamic { width: 100%; height: 100%; object-fit: cover; display: block; }
+.testimonial-text { font-size: clamp(1rem, 1.1vw, 1.3rem); line-height: 1.5; color: #333; }
+
+/* --- Scrolling Tabs Navigation --- */
+.scrolling-tabs-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
+    padding: 15px 5px;
+    -webkit-overflow-scrolling: touch;
+    height: auto !important;
+    mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
+}
+.scrolling-tabs-wrapper::-webkit-scrollbar { display: none; }
+#dynamic-tab-nav { display: flex; flex-wrap: nowrap !important; width: max-content; gap: 12px; }
+#dynamic-tab-nav .nav-item { flex: 0 0 auto; }
+#dynamic-tab-nav .nav-link {
+    background-color: #fff;
+    color: #333 !important;
+    border: 2px solid #333 !important;
+    border-radius: 0px;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    padding: 10px 20px;
+}
+#dynamic-tab-nav .nav-link:hover { box-shadow: 4px 4px 0px 0px #333; transform: translate(-2px, -2px); background-color: #f8f9fa; }
+#dynamic-tab-nav .nav-link.active { background-color: #333 !important; color: #fff !important; transform: none; box-shadow: none; }
+
+/* --- Pricing Section --- */
+.pricing-card-dark {
+    background-color: #f4f4f4;
+    border: 2px solid #333;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+.pricing-card-dark:hover {
+    background-color: #ededed;
+    box-shadow: 8px 8px 0px 0px #333;
+    transform: translate(-4px, -4px);
+}
+.product-badge {
+    display: inline-block;
+    width: fit-content;
+    background: #333;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.price-header .amount { font-size: 4rem; font-family: 'Rajdhani', sans-serif; font-weight: 700; line-height: 1; }
+.price-header .period { color: #777; font-size: 1rem; }
+.pricing-features li { padding: 8px 0; border-bottom: 1px solid #f8f8f8; }
+
+/* --- Mobile Focus Overlay --- */
+.testimonial-focus-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex; justify-content: center; padding-top: 60px;
+}
+.testimonial-focus-overlay.active { opacity: 1; }
+.focus-content-wrapper {
+    width: 90%; max-width: 500px;
+    background: #fff; border: 2px solid #333; padding: 20px;
+    box-shadow: 10px 10px 0px 0px #333; max-height: 85vh;
+    display: flex; flex-direction: column;
+}
+.focus-scroll-area { overflow-y: auto; padding-right: 10px; }
+.close-focus { background: #333; color: #fff; border: none; padding: 8px 15px; font-weight: 700; align-self: flex-end; }
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 991px) {
+    #dynamic-tab-nav { justify-content: flex-start; padding-left: 20px; }
+}
+
+@media (min-width: 992px) {
+    .scrolling-tabs-wrapper { display: flex; justify-content: center; mask-image: none; }
+    #dynamic-tab-nav { width: auto; justify-content: center; }
+}
+
+@media (max-width: 767px) {
+    .flipper { min-height: 350px; }
+    .testimonial-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .testimonial-img-dynamic { height: 300px; min-height: auto; }
+}
+
+@media (max-width: 576px) {
+    #pricing-section { padding-left: 10px; padding-right: 10px; }
+    .price-header .amount { font-size: 1.8rem !important; }
+}
+
+@media (max-width: 400px) {
+    .navbar-brand { font-size: 0.8rem !important; }
+}
+
+.coach-badge {
+    background-color: #fff !important;
+    color: #333 !important;
+    border: 1px solid #333 !important;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+/* Ensure badges wrap nicely on smaller cards */
+.pr-content .d-flex.flex-wrap {
+    margin-bottom: 1rem;
+}
