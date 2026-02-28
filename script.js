@@ -80,6 +80,28 @@ function populate_pr_cards(limit = 4) {
             currentPercent: 65 // Significant visual drop for a huge marathon PR
         },
         {
+            name: "Jake Bertelsen",
+            coach: "Ben Bayless",
+            category: "Road Focus",
+            image: "images/jake_bert.webp",
+            beforeTime: "2:38 (Marathon)",
+            currentTime: "2:17 (Marathon)",
+            improvement: "21 minute drop in 1 year",
+            beforePercent: 100,
+            currentPercent: 70
+        },
+        {
+            name: "Coleman Cronk",
+            coach: "Ben Bayless",
+            category: "Distance",
+            image: "images/coleman_cronk.jpeg",
+            beforeTime: "4:45 (Mile)",
+            currentTime: "9:15 (3200)",
+            improvement: "Major improvement in high school track",
+            beforePercent: 100,
+            currentPercent: 75
+        },
+        {
             name: "Kye Lowth",
             coach: "Matt Hansen",
             category: "5k & 3k",
@@ -102,6 +124,18 @@ function populate_pr_cards(limit = 4) {
             currentPercent: 82 // Noticeable but smaller gap than the marathon
         },
         {
+            name: "Parker Banzhaf",
+            coach: "Ben Bayless",
+            category: "Middle Distance / Distance",
+            image: "images/parker_banzhaf.jpeg",
+            beforeTime: "16:22 (5k)",
+            currentTime: "15:23 (5k)",
+            improvement: "59 second drop in under a year",
+            beforePercent: 100,
+            currentPercent: 78
+        },
+
+        {
             name: "Rohan Nairn",
             coach: "Matt Hansen",
             category: "Middle Distance",
@@ -111,17 +145,6 @@ function populate_pr_cards(limit = 4) {
             improvement: "63 second drop in one season",
             beforePercent: 100,
             currentPercent: 70
-        },
-        {
-            name: "Coleman Cronk",
-            coach: "Ben Bayless",
-            category: "Distance",
-            image: "images/coleman_cronk.jpeg",
-            beforeTime: "4:45 (Mile)",
-            currentTime: "9:15 (3200)",
-            improvement: "Major improvement in high school track",
-            beforePercent: 100,
-            currentPercent: 75
         },
         {
             name: "Lucas Bleakney",
@@ -144,28 +167,6 @@ function populate_pr_cards(limit = 4) {
             improvement: "27 minute drop in 6 months",
             beforePercent: 100,
             currentPercent: 68
-        },
-        {
-            name: "Jake Bertelsen",
-            coach: "Ben Bayless",
-            category: "Road Focus",
-            image: "images/jake_bert.webp",
-            beforeTime: "2:38 (Marathon)",
-            currentTime: "2:17 (Marathon)",
-            improvement: "21 minute drop in 1 year",
-            beforePercent: 100,
-            currentPercent: 70
-        },
-        {
-            name: "Parker Banzhaf",
-            coach: "Ben Bayless",
-            category: "Middle Distance / Distance",
-            image: "images/parker_banzhaf.jpeg",
-            beforeTime: "16:22 (5k)",
-            currentTime: "15:23 (5k)",
-            improvement: "59 second drop in under a year",
-            beforePercent: 100,
-            currentPercent: 78
         },
         {
             name: "Adam King",
@@ -335,6 +336,10 @@ function populate_athlete_testimonials_2() {
             , imageSrc: "images/jen_davis.jpg"
         },
         {
+            id: "max_bregozzo", coach: "Matt", label: "Max Bregozzo", content: "When I came to Matt, I was coming off a long period of self-coaching, not really having any structure or guidance within my training, I had some knowledge from being a student of the sport, but it limits your performance to a certain point. A priority from Matt was the obvious continuation of my aerobic development, as that is the limiting factor for me, and continuing what I was naturally good at already. He'd also love feedback from myself on the program and structure, and was always willing to be flexible if I communicated to him that didn't work with my schedule. I also had the opportunity to spent some time with Matt while he was home from college and honestly, I learned so much about the sport, how to approach it, and plenty of other bits of info that I still use today. The physiological progression was evident, I've ran times that 2 years ago I thought even come near. I'm so pleased that I can call Matt my coach but also my mate at the same time."
+            , imageSrc: "images/max_bregozzo.jpg"
+        },
+        {
             id: "elliot_rods", coach: "Benjamin", label: "Elliot Rodstrom", content: "The post college journey has been hard to navigate, but with Ben the transition has been seamless. Somehow he is able to make the combination of the complete training load and a full time job feel less stressfull than I could have managed alone. Ben helps adapt my training schedule more than every coach I've had in the past, which has proven to be successful with some of my recent races."
             , imageSrc: "images/elliot_rods.jpg"
         },
@@ -353,10 +358,6 @@ function populate_athlete_testimonials_2() {
         {
             id: "johnny_sayl", coach: "Benjamin", label: "Johnny Sayle", content: "Under Ben's coaching, I have progressed beyond where I was at in college, something that very few runners get to say. His philosophy of consistent 7/10 effort have worked wonders so far for me, including 30s off of my college 5k PR, and about a minute over my college 8k PR. Excelling at communication, Ben flawlessly adapts my training schedule to fit my busy work and life schedule. Cannot wait to see where we will continue to go in the future!"
             , imageSrc: "images/johnny_sayle.jpg"
-        },
-        {
-            id: "max_bregozzo", coach: "Matt", label: "Max Bregozzo", content: "When I came to Matt, I was coming off a long period of self-coaching, not really having any structure or guidance within my training, I had some knowledge from being a student of the sport, but it limits your performance to a certain point. A priority from Matt was the obvious continuation of my aerobic development, as that is the limiting factor for me, and continuing what I was naturally good at already. He'd also love feedback from myself on the program and structure, and was always willing to be flexible if I communicated to him that didn't work with my schedule. I also had the opportunity to spent some time with Matt while he was home from college and honestly, I learned so much about the sport, how to approach it, and plenty of other bits of info that I still use today. The physiological progression was evident, I've ran times that 2 years ago I thought even come near. I'm so pleased that I can call Matt my coach but also my mate at the same time."
-            , imageSrc: "images/max_bregozzo.jpg"
         },
     ];
 
