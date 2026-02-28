@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populate_athlete_testimonials_2();
     initScrollIndicators();
     populate_pr_cards(4);
+
 });
 
 function slide_in_overlay() {
@@ -16,6 +17,55 @@ function slide_in_overlay() {
     }, 500);
 }
 
+function handleTestimonialClick(element) {
+    if (window.innerWidth < 768) {
+        openTestimonialFocus(element);
+    }
+}
+
+function openTestimonialFocus(card) {
+    const content = card.innerHTML;
+    const overlay = document.createElement('div');
+    overlay.className = 'testimonial-focus-overlay';
+
+    // The "light gray" background is handled by the overlay class in CSS
+    overlay.innerHTML = `
+        <div class="focus-modal-content">
+            <button class="btn btn-dark w-100 mb-4 rajdhani-bold" onclick="closeTestimonialFocus()">CLOSE STORY</button>
+            <div class="full-text-view">
+                ${content}
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden'; // Stop site from scrolling behind
+
+    // Remove clamping for the focused view
+    const text = overlay.querySelector('.testimonial-text');
+    if (text) {
+        text.style.display = 'block';
+        text.style.webkitLineClamp = 'unset';
+    }
+
+    setTimeout(() => overlay.classList.add('active'), 10);
+
+    // Close when clicking the gray background
+    overlay.onclick = (e) => {
+        if (e.target === overlay) closeTestimonialFocus();
+    };
+}
+
+function closeTestimonialFocus() {
+    const overlay = document.querySelector('.testimonial-focus-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+            overlay.remove();
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
 function populate_pr_cards(limit = 4) {
     const prData = [
         {
@@ -277,38 +327,39 @@ function initScrollIndicators() {
 function populate_athlete_testimonials_2() {
     const tabData = [
         {
-            id: "jake_bert", label: "Jake Bertelsen", content: "The results speak for themselves. This training has allowed me to unlock running potential I never knew existed. The plans are extremely well-tailored to maximize outcomes for any given training timeline or race length. This program places a heavy emphasis on the importance of recovery and adjustments are readily made to prevent overtraining and injuries. I feel confident and prepared when I toe the line for each race. From the mile to the marathon, we have been able to accomplish amazing feats in the sport, and I trust the best is yet to come!"
+            id: "jake_bert", coach: "Benjamin", label: "Jake Bertelsen", content: "The results speak for themselves. This training has allowed me to unlock running potential I never knew existed. The plans are extremely well-tailored to maximize outcomes for any given training timeline or race length. This program places a heavy emphasis on the importance of recovery and adjustments are readily made to prevent overtraining and injuries. I feel confident and prepared when I toe the line for each race. From the mile to the marathon, we have been able to accomplish amazing feats in the sport, and I trust the best is yet to come!"
             , imageSrc: "images/jake_bert.webp"
         },
         {
-            id: "jenn_davi", label: "Jennifer Davis", content: "Ben is the absolute best! Not only did he bring my marathon time down from 3:12 to 2:50 in just 5 months and half time to 1:17 in 7 months, he also helped me develop immense faith in my ability as a runner & develop a love for the process. Without prior running experience, I lacked racing confidence and Ben has helped significantly through constant communication, education and endless support. If you’re looking for a coach who is genuinely invested in your success and understanding you as an athlete look no further!"
+            id: "jenn_davi", coach: "Benjamin", label: "Jennifer Davis", content: "Ben is the absolute best! Not only did he bring my marathon time down from 3:12 to 2:50 in just 5 months and half time to 1:17 in 7 months, he also helped me develop immense faith in my ability as a runner & develop a love for the process. Without prior running experience, I lacked racing confidence and Ben has helped significantly through constant communication, education and endless support. If you’re looking for a coach who is genuinely invested in your success and understanding you as an athlete look no further!"
             , imageSrc: "images/jen_davis.jpg"
         },
         {
-            id: "elliot_rods", label: "Elliot Rodstrom", content: "The post college journey has been hard to navigate, but with Ben the transition has been seamless. Somehow he is able to make the combination of the complete training load and a full time job feel less stressfull than I could have managed alone. Ben helps adapt my training schedule more than every coach I've had in the past, which has proven to be successful with some of my recent races."
+            id: "elliot_rods", coach: "Benjamin", label: "Elliot Rodstrom", content: "The post college journey has been hard to navigate, but with Ben the transition has been seamless. Somehow he is able to make the combination of the complete training load and a full time job feel less stressfull than I could have managed alone. Ben helps adapt my training schedule more than every coach I've had in the past, which has proven to be successful with some of my recent races."
             , imageSrc: "images/elliot_rods.jpg"
         },
         {
-            id: "david_duvic", label: "David Ducic", content: "Working with Coach Ben Bayless has allowed me to progress further in the sport than I could have ever imagined, all while developing my appreciation and understanding of the process. Top notch communication, expertise, and passion are necessary too effective coaching, and I am certain that this program embodies all. Taking a chance and reaching out was one of the best decisions I have ever made."
+            id: "david_duvic", coach: "Benjamin", label: "David Ducic", content: "Working with Coach Ben Bayless has allowed me to progress further in the sport than I could have ever imagined, all while developing my appreciation and understanding of the process. Top notch communication, expertise, and passion are necessary too effective coaching, and I am certain that this program embodies all. Taking a chance and reaching out was one of the best decisions I have ever made."
             , imageSrc: "images/david_duvic.png"
         },
         {
-            id: "parker_banz", label: "Parker Banzhaf", content: "If you want to get better in all aspects of life, look no further. Ben possesses elite-level communication and is always on top of the little things to keep you adapting and always progressing further. It didn’t even feel like we were working over the phone with how frequently we communicated. Failing under the Dutchman method doesn’t even feel like a possibility."
+            id: "parker_banz", coach: "Benjamin", label: "Parker Banzhaf", content: "If you want to get better in all aspects of life, look no further. Ben possesses elite-level communication and is always on top of the little things to keep you adapting and always progressing further. It didn’t even feel like we were working over the phone with how frequently we communicated. Failing under the Dutchman method doesn’t even feel like a possibility."
             , imageSrc: "images/parker_banz_2.jpg"
         },
         {
-            id: "alex_kowa", label: "Alex Kowalak", content: "Ben's coaching has been all about maintaining consistency over agressiveness in training, something that I truly enjoy, and have seen substantial progress with lately. With an unforgiving work schedule, Ben and I have come up with creative solutions to continue quality training and just getting out the door every day that I can."
+            id: "alex_kowa", coach: "Benjamin", label: "Alex Kowalak", content: "Ben's coaching has been all about maintaining consistency over agressiveness in training, something that I truly enjoy, and have seen substantial progress with lately. With an unforgiving work schedule, Ben and I have come up with creative solutions to continue quality training and just getting out the door every day that I can."
             , imageSrc: "images/alex_kowa.jpg"
         },
         {
-            id: "johnny_sayl", label: "Johnny Sayle", content: "Under Ben's coaching, I have progressed beyond where I was at in college, something that very few runners get to say. His philosophy of consistent 7/10 effort have worked wonders so far for me, including 30s off of my college 5k PR, and about a minute over my college 8k PR. Excelling at communication, Ben flawlessly adapts my training schedule to fit my busy work and life schedule. Cannot wait to see where we will continue to go in the future!"
+            id: "johnny_sayl", coach: "Benjamin", label: "Johnny Sayle", content: "Under Ben's coaching, I have progressed beyond where I was at in college, something that very few runners get to say. His philosophy of consistent 7/10 effort have worked wonders so far for me, including 30s off of my college 5k PR, and about a minute over my college 8k PR. Excelling at communication, Ben flawlessly adapts my training schedule to fit my busy work and life schedule. Cannot wait to see where we will continue to go in the future!"
             , imageSrc: "images/johnny_sayle.jpg"
         },
         {
-            id: "max_bregozzo", label: "Max Bregozzo", content: "When I came to Matt, I was coming off a long period of self-coaching, not really having any structure or guidance within my training, I had some knowledge from being a student of the sport, but it limits your performance to a certain point. A priority from Matt was the obvious continuation of my aerobic development, as that is the limiting factor for me, and continuing what I was naturally good at already. He'd also love feedback from myself on the program and structure, and was always willing to be flexible if I communicated to him that didn't work with my schedule. I also had the opportunity to spent some time with Matt while he was home from college and honestly, I learned so much about the sport, how to approach it, and plenty of other bits of info that I still use today. The physiological progression was evident, I've ran times that 2 years ago I thought even come near. I'm so pleased that I can call Matt my coach but also my mate at the same time."
+            id: "max_bregozzo", coach: "Matt", label: "Max Bregozzo", content: "When I came to Matt, I was coming off a long period of self-coaching, not really having any structure or guidance within my training, I had some knowledge from being a student of the sport, but it limits your performance to a certain point. A priority from Matt was the obvious continuation of my aerobic development, as that is the limiting factor for me, and continuing what I was naturally good at already. He'd also love feedback from myself on the program and structure, and was always willing to be flexible if I communicated to him that didn't work with my schedule. I also had the opportunity to spent some time with Matt while he was home from college and honestly, I learned so much about the sport, how to approach it, and plenty of other bits of info that I still use today. The physiological progression was evident, I've ran times that 2 years ago I thought even come near. I'm so pleased that I can call Matt my coach but also my mate at the same time."
             , imageSrc: "images/max_bregozzo.jpg"
         },
     ];
+
 
     const tabNavContainer = document.getElementById('dynamic-tab-nav');
     const tabContentContainer = document.getElementById('dynamic-tab-content');
@@ -320,62 +371,43 @@ function populate_athlete_testimonials_2() {
         const isActive = index === 0;
         const activeClass = isActive ? 'active' : '';
         const showClass = isActive ? 'show active' : '';
-        const ariaSelected = isActive ? 'true' : 'false';
 
+        // 1. The Name Buttons (Navigation)
         navHTML += `
             <li class="nav-item" role="presentation">
-                <button class="nav-link ${activeClass}" 
+                <button class="nav-link ${activeClass} rajdhani-bold" 
                         id="${item.id}-tab" 
                         data-bs-target="#${item.id}-pane" 
                         data-bs-toggle="pill" 
                         type="button" 
-                        role="tab" 
-                        aria-controls="${item.id}-pane" 
-                        aria-selected="${ariaSelected}">
+                        role="tab">
                     ${item.label}
                 </button>
             </li>
         `;
 
-        // Updated structure with the testimonial-card class
-        // Inside populate_athlete_testimonials() loop:
+        // 2. The Card (Content)
         contentHTML += `
-    <div class="tab-pane fade ${showClass}" 
-         id="${item.id}-pane" 
-         role="tabpanel" 
-         aria-labelledby="${item.id}-tab">
-
-        <div class="testimonial-card flip-container" onclick="this.classList.toggle('flipped')">
-            <div class="flipper">
-                
-                <div class="front">
-                    <div class="row g-0 align-items-stretch h-100">
+            <div class="tab-pane fade ${showClass}" id="${item.id}-pane" role="tabpanel">
+                <div class="testimonial-card" onclick="handleTestimonialClick(this)">
+                    <div class="row g-0 align-items-stretch">
                         <div class="col-md-5">
-                            <img src="${item.imageSrc}" class="testimonial-img-dynamic" alt="${item.label}">
+                            <img src="${item.imageSrc}" class="testimonial-main-img" alt="${item.label}">
                         </div>     
-                        <div class="col-md-7 d-flex flex-column justify-content-center p-4 p-md-5">
-                            <div class="product-badge rajdhani-bold mb-3">Athlete Story</div>
-                            <h3 class="rajdhani-bold text-uppercase mb-2">${item.label}</h3>
+                        <div class="col-md-7 d-flex flex-column p-4 p-md-5">
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <div class="coach-badge">Coached by: ${item.coach || 'Ben Bayless'}</div>
+                            </div>
+                            <h3 class="rajdhani-bold text-uppercase mb-3">${item.label}</h3>
                             <p class="rajdhani-regular testimonial-text">"${item.content}"</p>
-                            <small class="text-muted mt-3 rajdhani-bold">Click to view stats ↻</small>
+                            <div class="read-more-hint mt-auto pt-3 rajdhani-bold d-md-none">
+                                CLICK TO READ FULL STORY <i class="bi bi-arrows-fullscreen ms-1"></i>
+                            </div>
                         </div>     
                     </div>
                 </div>
-
-                <div class="back d-flex flex-column justify-content-center align-items-center text-center p-5">
-                    <div class="product-badge rajdhani-bold mb-4">Latest Activity</div>
-                    <h3 class="rajdhani-bold text-uppercase">${item.label}</h3>
-                    <div class="strava-placeholder my-4">
-                        <p class="rajdhani-regular fs-4 mb-1">Coming Soon: Strava Integration</p>
-                        <p class="text-muted">Live training data and recent runs.</p>
-                    </div>
-                    <button class="btn btn-outline-dark btn-sm rajdhani-bold">Back to Story</button>
-                </div>
-
             </div>
-        </div>
-    </div>
-`;
+        `;
     });
 
     tabNavContainer.innerHTML = navHTML;
