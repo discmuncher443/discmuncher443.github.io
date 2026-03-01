@@ -15,7 +15,6 @@
 #dutchman_window { height: 100vh; }
 #animatedText { z-index: 100; pointer-events: auto; }
 
-/* Brand Button */
 .brand-button {
     background-color: #333;
     color: white;
@@ -143,6 +142,14 @@
 .progress-fill.improved { background-color: #212529; }
 .pr-item span { letter-spacing: 0.5px; font-size: 0.85rem; }
 
+.flipper {
+    position: relative;
+    width: 100%;
+    min-height: 520px; /* Adjust this so the content fits comfortably */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
 /* ==========================================================================
    5. TESTIMONIALS & FLIP CONTAINERS
    ========================================================================== */
@@ -163,38 +170,45 @@
 .testimonial-main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .testimonial-text { font-size: clamp(1rem, 1.1vw, 1.3rem); line-height: 1.5; color: #333; }
 
-/* Elite Progress Flip Logic */
+
 .flip-container {
     perspective: 1200px;
-    background-color: transparent;
-    cursor: pointer;
-    margin: 15px;
-    border: 2px solid #333;
-    border-radius: 4px;
-    transition: all 0.3s ease-in-out;
-    position: relative;
+    min-height: 550px; 
+    height: 100%;
 }
-.flip-container:hover {
-    box-shadow: 8px 8px 0px 0px #333;
-    transform: translate(-4px, -4px);
-}
+
 .flipper {
     position: relative;
-    width: 100%; height: 100%;
-    min-height: 450px;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    height: 100%;
+    min-height: 550px; 
     transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.flip-container.flipped .flipper { transform: rotateY(180deg); }
+
 .front, .back {
     position: absolute;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
     backface-visibility: hidden;
-    top: 0; left: 0;
-    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
 }
-.front { z-index: 2; }
-.back { transform: rotateY(180deg); background-color: #f8f9fa; z-index: 1; }
+
+
+.back {
+    transform: rotateY(180deg);
+    background-color: #f8f9fa;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.flip-container.flipped .flipper {
+    transform: rotateY(180deg);
+}
 
 /* ==========================================================================
    6. SCROLLING TABS NAVIGATION
@@ -326,12 +340,10 @@
     #dynamic-tab-nav { width: auto; justify-content: center; }
 }
 
-/* Tablet & Smaller Desktop */
 @media (max-width: 991px) {
     #dynamic-tab-nav { justify-content: flex-start; padding-left: 15px; }
 }
 
-/* Mobile Devices */
 @media (max-width: 767px) {
     .flipper { min-height: 350px; }
     .testimonial-text {
@@ -345,7 +357,6 @@
     .testimonial-card { max-height: 550px; }
 }
 
-/* Small Phones */
 @media (max-width: 576px) {
     #pricing-section { padding: 0 10px; }
     .price-header .amount { font-size: 1.8rem !important; }

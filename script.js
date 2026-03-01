@@ -77,7 +77,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "2:29:12",
             improvement: "26 minute improvement in 12 months",
             beforePercent: 100,
-            currentPercent: 65 // Significant visual drop for a huge marathon PR
+            currentPercent: 65,
+            strava: "https://www.strava.com/athletes/32059038"
         },
         {
             name: "Jake Bertelsen",
@@ -88,7 +89,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "2:17 (Marathon)",
             improvement: "21 minute drop in 1 year",
             beforePercent: 100,
-            currentPercent: 70
+            currentPercent: 70,
+            strava: "https://www.strava.com/athletes/59996833"
         },
         {
             name: "Coleman Cronk",
@@ -99,7 +101,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "9:15 (3200)",
             improvement: "Major improvement in high school track",
             beforePercent: 100,
-            currentPercent: 75
+            currentPercent: 75,
+            strava: "https://www.strava.com/athletes/48359392"
         },
         {
             name: "Kye Lowth",
@@ -110,7 +113,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "14:26 (5k)",
             improvement: "54s improvement in 5k",
             beforePercent: 100,
-            currentPercent: 72
+            currentPercent: 72,
+            strava: "https://www.strava.com/athletes/114226836"
         },
         {
             name: "Max Bregozzo",
@@ -121,7 +125,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "3:59 (1500m)",
             improvement: "11 second drop in one season",
             beforePercent: 100,
-            currentPercent: 82 // Noticeable but smaller gap than the marathon
+            currentPercent: 82,
+            strava: "https://www.strava.com/athletes/56316671"
         },
         {
             name: "Parker Banzhaf",
@@ -132,7 +137,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "15:23 (5k)",
             improvement: "59 second drop in under a year",
             beforePercent: 100,
-            currentPercent: 78
+            currentPercent: 78,
+            strava: "https://www.strava.com/athletes/99985609"
         },
         {
             name: "Rohan Nairn",
@@ -143,7 +149,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "8:42 (3k)",
             improvement: "63 second drop in one season",
             beforePercent: 100,
-            currentPercent: 70
+            currentPercent: 70,
+            strava: "https://www.strava.com/athletes/39953743"
         },
         {
             name: "Lucas Bleakney",
@@ -154,7 +161,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "15:43 (5k)",
             improvement: "67 second drop in one yeat",
             beforePercent: 100,
-            currentPercent: 70
+            currentPercent: 70,
+            strava: "https://www.strava.com/athletes/126864860"
         },
         {
             name: "Nick Bruneavs",
@@ -165,7 +173,8 @@ function populate_pr_cards(limit = 4) {
             currentTime: "2:49",
             improvement: "27 minute drop in 6 months",
             beforePercent: 100,
-            currentPercent: 68
+            currentPercent: 68,
+            strava: "https://www.strava.com/athletes/106634112"
         },
         {
             name: "Adam King",
@@ -183,28 +192,30 @@ function populate_pr_cards(limit = 4) {
     const seeMoreBtn = document.getElementById('see-more-btn');
     const btnContainer = document.getElementById('see-more-container');
 
-    // Slice the data based on the limit provided
+    // 1. Slice the data to show only the limited amount
     const visibleData = prData.slice(0, limit);
 
     let html = '';
     visibleData.forEach(athlete => {
-        // Inside your prData.forEach loop in populate_pr_cards:
         html += `
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="pr-card h-100 p-4">
-                        <div class="pr-image-wrapper mb-3">
-                            <img src="${athlete.image}" alt="${athlete.name}" class="img-fluid pr-img">
-                        </div>
-                        <div class="pr-content">
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="pr-card flip-container" onclick="this.classList.toggle('flipped')">
+                    <div class="flipper">
+                        
+                        <div class="front p-4">
+                            <div class="pr-image-wrapper mb-3">
+                                <img src="${athlete.image}" alt="${athlete.name}" class="img-fluid pr-img">
+                            </div>
+                            
                             <h4 class="rajdhani-bold text-uppercase mb-1">${athlete.name}</h4>
                             
                             <div class="d-flex flex-wrap gap-2 mb-3">
-                                <div class="badge bg-dark rajdhani-regular">${athlete.category}</div>
-                                <div class="badge coach-badge rajdhani-regular">Coach: ${athlete.coach}</div>
+                                <div class="product-badge">${athlete.category || 'Elite Athlete'}</div>
+                                <div class="coach-badge">Coach: ${athlete.coach}</div>
                             </div>
                             
                             <div class="pr-stats">
-                                <div class="pr-item mb-3">
+                                <div class="pr-item mb-2">
                                     <div class="d-flex justify-content-between rajdhani-bold small">
                                         <span>BEFORE</span>
                                         <span>${athlete.beforeTime}</span>
@@ -224,25 +235,47 @@ function populate_pr_cards(limit = 4) {
                                     </div>
                                 </div>
                             </div>
+                            
                             <p class="rajdhani-regular mt-3 mb-0 small text-muted">*${athlete.improvement}</p>
+                            <div class="text-center mt-3">
+                                <small class="rajdhani-bold text-muted" style="font-size: 0.7rem;">CLICK FOR STRAVA ↻</small>
+                            </div>
                         </div>
+
+                        <div class="back p-4 d-flex flex-column align-items-center justify-content-center text-center">
+                            <div class="product-badge mb-3">Live Activity</div>
+                            <h4 class="rajdhani-bold text-uppercase">${athlete.name}</h4>
+                            
+                            <div class="strava-placeholder border-dashed p-3 my-4 w-100" style="border: 1px dashed #333;">
+                                <p class="rajdhani-bold mb-1">Latest Workout</p>
+                                <p class="small text-muted mb-0">Strava Data Coming Soon...</p>
+                            </div>
+                            
+                            <a href="${athlete.strava}" target="_blank" class="btn btn-dark w-100 rajdhani-bold mb-2" onclick="event.stopPropagation();">VIEW ON STRAVA</a>
+                            <small class="text-muted rajdhani-bold" style="font-size: 0.65rem;">CLICK TO FLIP BACK</small>
+                        </div>
+
                     </div>
                 </div>
-            `;
+            </div>
+        `;
     });
 
     container.innerHTML = html;
 
-    // Handle button visibility and logic
+    // 2. Logic for the "See More" Button
     if (limit >= prData.length) {
-        btnContainer.style.display = 'none'; // Hide if all are shown
+        if (btnContainer) btnContainer.style.display = 'none';
     } else {
+        if (btnContainer) btnContainer.style.display = 'block';
         seeMoreBtn.onclick = () => {
-            // When clicked, show everything (or increase the number)
+            // Show all athletes
             populate_pr_cards(prData.length);
 
-            // Optional: Smooth scroll down to the new cards
-            window.scrollBy({ top: 300, behavior: 'smooth' });
+            // Smooth scroll to the content that just appeared
+            setTimeout(() => {
+                window.scrollBy({ top: 400, behavior: 'smooth' });
+            }, 100);
         };
     }
 }
