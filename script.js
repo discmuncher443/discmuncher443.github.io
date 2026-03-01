@@ -134,7 +134,6 @@ function populate_pr_cards(limit = 4) {
             beforePercent: 100,
             currentPercent: 78
         },
-
         {
             name: "Rohan Nairn",
             coach: "Matt Hansen",
@@ -149,11 +148,11 @@ function populate_pr_cards(limit = 4) {
         {
             name: "Lucas Bleakney",
             coach: "Ben Bayless",
-            category: "Middle Distance",
+            category: "Cross country",
             image: "images/lucas_bleakney.jpeg",
-            beforeTime: "9:45 (3k)",
-            currentTime: "8:42 (3k)",
-            improvement: "63 second drop in one season",
+            beforeTime: "16:50 (5k)",
+            currentTime: "15:43 (5k)",
+            improvement: "67 second drop in one yeat",
             beforePercent: 100,
             currentPercent: 70
         },
@@ -175,7 +174,7 @@ function populate_pr_cards(limit = 4) {
             image: "images/adam_king.jpeg",
             beforeTime: "2:58",
             currentTime: "2:45",
-            improvement: "13 minutes drop in 6 months",
+            improvement: "13 minute drop in 6 months",
             beforePercent: 100,
             currentPercent: 80
         }
