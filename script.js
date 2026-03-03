@@ -70,7 +70,7 @@ function populate_pr_cards(limit = 4) {
     const prData = [
         {
             name: "Kent Ohori",
-            coach: "Matt Hansen",
+            coach: "Matt",
             category: "Marathon Focus",
             image: "images/kent_ohori.jpg",
             beforeTime: "2:55:23",
@@ -82,7 +82,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Jake Bertelsen",
-            coach: "Ben Bayless",
+            coach: "Benjamin",
             category: "Road Focus",
             image: "images/jake_bert.webp",
             beforeTime: "2:38 (Marathon)",
@@ -94,7 +94,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Coleman Cronk",
-            coach: "Ben Bayless",
+            coach: "Benjamin",
             category: "Distance",
             image: "images/coleman_cronk.jpeg",
             beforeTime: "4:45 (Mile)",
@@ -106,7 +106,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Kye Lowth",
-            coach: "Matt Hansen",
+            coach: "Matt",
             category: "5k & 3k",
             image: "images/kye_lowth.jpg",
             beforeTime: "15:20 (5k)",
@@ -118,7 +118,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Max Bregozzo",
-            coach: "Matt Hansen",
+            coach: "Benjamin",
             category: "Middle Distance",
             image: "images/max_bregozzo.jpg",
             beforeTime: "4:10 (1500m)",
@@ -130,7 +130,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Parker Banzhaf",
-            coach: "Ben Bayless",
+            coach: "Benjamin",
             category: "Middle Distance / Distance",
             image: "images/parker_banzhaf.jpeg",
             beforeTime: "16:22 (5k)",
@@ -142,7 +142,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Rohan Nairn",
-            coach: "Matt Hansen",
+            coach: "Matt",
             category: "Middle Distance",
             image: "images/rohan_nairn.jpg",
             beforeTime: "9:45 (3k)",
@@ -154,7 +154,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Lucas Bleakney",
-            coach: "Ben Bayless",
+            coach: "Benjamin",
             category: "Cross country",
             image: "images/lucas_bleakney.jpeg",
             beforeTime: "16:50 (5k)",
@@ -166,7 +166,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Nick Bruneavs",
-            coach: "Ben Bayless",
+            coach: "Benjamin",
             category: "Marathon",
             image: "images/nick_bruneavs.jpeg",
             beforeTime: "3:16",
@@ -178,7 +178,7 @@ function populate_pr_cards(limit = 4) {
         },
         {
             name: "Adam King",
-            coach: "Ben Bayless",
+            coach: "Benjamin",
             category: "Marathon",
             image: "images/adam_king.jpeg",
             beforeTime: "2:58",
@@ -429,7 +429,7 @@ function populate_athlete_testimonials_2() {
                         </div>     
                         <div class="col-md-7 d-flex flex-column p-4 p-md-5">
                             <div class="d-flex flex-wrap gap-2 mb-3">
-                                <div class="coach-badge">Coached by: ${item.coach || 'Ben Bayless'}</div>
+                                <div class="coach-badge">Coach: ${item.coach || 'Ben Bayless'}</div>
                             </div>
                             <h3 class="rajdhani-bold text-uppercase mb-3">${item.label}</h3>
                             <p class="rajdhani-regular testimonial-text">"${item.content}"</p>
