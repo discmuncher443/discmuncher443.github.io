@@ -52,6 +52,8 @@
     text-align: left;
     z-index: 1;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
 }
 
 .slide-up { animation: slideUpFade 1.5s ease-out forwards; }
@@ -360,6 +362,22 @@
 @media (max-width: 576px) {
     #pricing-section { padding: 0 10px; }
     .price-header .amount { font-size: 1.8rem !important; }
+    
+    .overlay {
+        text-align: left !important; /* Forces text to the left */
+        left: 5% !important; /* Maintains your original left-side positioning */
+        width: 90%;
+        transform: none !important; /* Prevents center-translation */
+    }
+
+    .hero-btn {
+        width: auto !important; /* Hugs the text */
+        display: inline-block;
+        font-size: 0.75rem !important; /* Smaller for narrow screens */
+        padding: 8px 12px !important; /* Balanced padding */
+        white-space: nowrap;
+        flex: 0 0 auto !important; /* Prevents the button from growing/stretching */
+    } 
 }
 
 @media (max-width: 400px) {
