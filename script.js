@@ -93,6 +93,30 @@ function populate_pr_cards(limit = 4) {
             strava: "https://www.strava.com/athletes/59996833"
         },
         {
+            name: "Johnny Sayle",
+            coach: "Benjamin",
+            category: "Roads / Track",
+            image: "images/johnny_sayle.jpg",
+            beforeTime: "24:48 (8k)",
+            currentTime: "23:55 (8k)",
+            improvement: "53 seconds dropped in a solo effort",
+            beforePercent: 100,
+            currentPercent: 69,
+            strava: "https://www.strava.com/athletes/57814033"
+        },
+                {
+            name: "Max Bregozzo",
+            coach: "Benjamin",
+            category: "Middle Distance",
+            image: "images/max_bregozzo.jpg",
+            beforeTime: "4:10 (1500m)",
+            currentTime: "3:59 (1500m)",
+            improvement: "11 second drop in one season",
+            beforePercent: 100,
+            currentPercent: 82,
+            strava: "https://www.strava.com/athletes/56316671"
+        },
+        {
             name: "Coleman Cronk",
             coach: "Benjamin",
             category: "Distance",
@@ -115,18 +139,6 @@ function populate_pr_cards(limit = 4) {
             beforePercent: 100,
             currentPercent: 72,
             strava: "https://www.strava.com/athletes/114226836"
-        },
-        {
-            name: "Max Bregozzo",
-            coach: "Benjamin",
-            category: "Middle Distance",
-            image: "images/max_bregozzo.jpg",
-            beforeTime: "4:10 (1500m)",
-            currentTime: "3:59 (1500m)",
-            improvement: "11 second drop in one season",
-            beforePercent: 100,
-            currentPercent: 82,
-            strava: "https://www.strava.com/athletes/56316671"
         },
         {
             name: "Parker Banzhaf",
